@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created By : Berkson Ximenes
@@ -74,4 +75,18 @@ public class WishList {
         return new WishList(customerId);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof WishList other)) {
+            return false;
+        }
+        return Objects.equals(this.id, other.id)
+               && Objects.equals(this.customerId, other.customerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, customerId);
+    }
 }
