@@ -1,0 +1,39 @@
+services:
+  mongodb:
+    image: 'mongo:latest'
+    container_name: wishlist-mongodb
+    network_mode: host
+    environment:
+      - 'MONGO_INITDB_DATABASE=wishlistdb'
+      - 'MONGO_INITDB_ROOT_PASSWORD=secret'
+      - 'MONGO_INITDB_ROOT_USERNAME=root'
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  wishlist-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wishlist-app
+    network_mode: host
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://root:secret@localhost:27017/wishlistdb?authSource=admin
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  mongodb_data:
+    driver: local
