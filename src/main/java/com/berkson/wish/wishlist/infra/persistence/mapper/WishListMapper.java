@@ -2,8 +2,8 @@ package com.berkson.wish.wishlist.infra.persistence.mapper;
 
 import com.berkson.wish.wishlist.infra.persistence.document.ProductDocument;
 import com.berkson.wish.wishlist.infra.persistence.document.WishListDocument;
-import com.berkson.wish.wishlist.model.Product;
-import com.berkson.wish.wishlist.model.WishList;
+import com.berkson.wish.wishlist.domain.entity.Product;
+import com.berkson.wish.wishlist.domain.entity.WishList;
 import org.springframework.stereotype.Component;
 
 /**

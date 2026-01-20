@@ -1,5 +1,7 @@
 package com.berkson.wish.wishlist.model;
 
+import com.berkson.wish.wishlist.domain.entity.Product;
+import com.berkson.wish.wishlist.domain.entity.WishList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
