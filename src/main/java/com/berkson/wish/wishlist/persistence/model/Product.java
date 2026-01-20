@@ -1,4 +1,4 @@
-package com.berkson.wish.wishlist.infra.api.model;
+package com.berkson.wish.wishlist.persistence.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

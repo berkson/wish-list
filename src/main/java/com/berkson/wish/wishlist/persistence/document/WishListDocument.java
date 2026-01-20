@@ -1,6 +1,6 @@
-package com.berkson.wish.wishlist.data.domain;
+package com.berkson.wish.wishlist.persistence.document;
 
-import com.berkson.wish.wishlist.infra.api.model.WishList;
+import com.berkson.wish.wishlist.persistence.model.WishList;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
