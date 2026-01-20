@@ -1,5 +1,6 @@
 package com.berkson.wish.wishlist.aplication.service;
 
+import com.berkson.wish.wishlist.infra.controller.dto.CheckProductResponse;
 import com.berkson.wish.wishlist.infra.controller.dto.ProductResponse;
 import com.berkson.wish.wishlist.infra.controller.dto.WishListResponse;
 import lombok.RequiredArgsConstructor;
@@ -37,8 +38,9 @@ public class RequestService {
                         .toList());
     }
 
-    public Mono<Boolean> isProductInWishList(String customerId, String productId) {
-        return wishListService.isProductInWishList(customerId, productId);
+    public Mono<CheckProductResponse> isProductInWishList(String customerId, String productId) {
+        return wishListService.isProductInWishList(customerId, productId)
+                .flatMap(isInWishList -> Mono.just(new CheckProductResponse(isInWishList)));
     }
 
 }
