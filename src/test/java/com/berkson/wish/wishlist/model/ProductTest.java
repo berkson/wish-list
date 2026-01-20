@@ -1,6 +1,10 @@
 package com.berkson.wish.wishlist.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Created By : Berkson Ximenes
@@ -9,4 +13,36 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
 
+    @Test
+    @DisplayName("Deve criar produto com ID")
+    void shouldCreateProductWithId() {
+        Product product = Product.create("product-001");
+
+        assertThat(product).isNotNull();
+        assertThat(product.getProductId()).isEqualTo("product-001");
+    }
+
+    @Test
+    @DisplayName("Não deve criar produto com ID nulo")
+    void shouldNotCreateProductWithNullId() {
+        assertThatThrownBy(() -> Product.create(null))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("O ID do produto não pode ser nulo ou vazio");
+    }
+
+    @Test
+    @DisplayName("Não deve criar produto com ID vazio")
+    void shouldNotCreateProductWithEmptyId() {
+        assertThatThrownBy(() -> Product.create(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("O ID do produto não pode ser nulo ou vazio");
+    }
+
+    @Test
+    @DisplayName("Não deve criar produto com ID em branco")
+    void shouldNotCreateProductWithBlankId() {
+        assertThatThrownBy(() -> Product.create("   "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("O ID do produto não pode ser nulo ou vazio");
+    }
 }

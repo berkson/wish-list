@@ -1,4 +1,4 @@
-package com.berkson.wish.wishlist.persistence.model;
+package com.berkson.wish.wishlist.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,8 +12,8 @@ import java.util.Objects;
  * Date : 19/01/2026
  **/
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Product {
