@@ -1,6 +1,6 @@
-package com.berkson.wish.wishlist.persistence.repository;
+package com.berkson.wish.wishlist.infra.persistence.repository;
 
-import com.berkson.wish.wishlist.persistence.document.WishListDocument;
+import com.berkson.wish.wishlist.infra.persistence.document.WishListDocument;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
 
