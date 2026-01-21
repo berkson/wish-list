@@ -1,4 +1,4 @@
-package com.berkson.wish.wishlist.model;
+package com.berkson.wish.wishlist.domain.entity;
 
 import com.berkson.wish.wishlist.domain.entity.Product;
 import com.berkson.wish.wishlist.domain.entity.WishList;
