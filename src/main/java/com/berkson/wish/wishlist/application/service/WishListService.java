@@ -1,4 +1,4 @@
-package com.berkson.wish.wishlist.aplication.service;
+package com.berkson.wish.wishlist.application.service;
 
 import com.berkson.wish.wishlist.domain.entity.Product;
 import com.berkson.wish.wishlist.domain.entity.WishList;
