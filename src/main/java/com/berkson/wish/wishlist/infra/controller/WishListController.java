@@ -1,6 +1,6 @@
 package com.berkson.wish.wishlist.infra.controller;
 
-import com.berkson.wish.wishlist.aplication.service.RequestService;
+import com.berkson.wish.wishlist.application.service.RequestService;
 import com.berkson.wish.wishlist.infra.controller.dto.AddProductRequest;
 import com.berkson.wish.wishlist.infra.controller.dto.CheckProductResponse;
 import com.berkson.wish.wishlist.infra.controller.dto.ProductResponse;
