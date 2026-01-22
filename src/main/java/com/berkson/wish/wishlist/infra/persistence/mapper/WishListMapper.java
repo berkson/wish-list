@@ -6,6 +6,9 @@ import com.berkson.wish.wishlist.domain.entity.Product;
 import com.berkson.wish.wishlist.domain.entity.WishList;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 /**
  * Created By : Berkson Ximenes
  * Date : 20/01/2026
@@ -18,7 +21,7 @@ public class WishListMapper {
         document.setId(wishList.getId());
         document.setCustomerId(wishList.getCustomerId());
         document.setProducts(wishList.getProducts()
-                .stream().map(this::toProductDocument).toList());
+                .stream().map(this::toProductDocument).collect(Collectors.toList()));
         return document;
     }
 
@@ -26,8 +29,8 @@ public class WishListMapper {
         WishList wishList = new WishList();
         wishList.setId(document.getId());
         wishList.setCustomerId(document.getCustomerId());
-        wishList.setProducts(document.getProducts()
-                .stream().map(this::toProduct).toList());
+        wishList.setProducts(new ArrayList<>(document.getProducts()
+                .stream().map(this::toProduct).toList()));
         return wishList;
     }
 
