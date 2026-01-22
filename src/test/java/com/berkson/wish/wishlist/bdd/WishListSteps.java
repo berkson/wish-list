@@ -70,7 +70,6 @@ public class WishListSteps {
     }
 
     @When("o cliente {string} adiciona o produto {string} à wishlist")
-    @Given("o cliente {string} adiciona o produto {string} à wishlist")
     public void customerAddsProductToWishlist(String customerId, String productId) {
         lastResponse = webTestClient.post()
                 .uri("/api/v1/wishlists/" + customerId + "/products")
@@ -112,7 +111,7 @@ public class WishListSteps {
     @When("o cliente {string} verifica se o produto {string} existe na wishlist")
     public void customerChecksIfProductIsInWishlist(String customerId, String productId) {
         lastResponse = webTestClient.get()
-                .uri("/api/v1/wishlists/" + customerId + "/products/" + productId)
+                .uri("/api/v1/wishlists/" + customerId + "/products/" + productId + "/exists")
                 .exchange();
 
         lastCheckProductResponse = lastResponse
@@ -125,7 +124,7 @@ public class WishListSteps {
     @Then("a wishlist do cliente {string} deve conter o produto {string}")
     public void wishlistShouldContainProduct(String customerId, String productId) {
         webTestClient.get()
-                .uri("/api/v1/wishlists/" + customerId + "/products/" + productId)
+                .uri("/api/v1/wishlists/" + customerId + "/products/" + productId + "/exists")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(CheckProductResponse.class)
@@ -137,7 +136,7 @@ public class WishListSteps {
     @Then("a wishlist do cliente {string} não deve conter o produto {string}")
     public void wishlistShouldNotContainProduct(String customerId, String productId) {
         webTestClient.get()
-                .uri("/api/v1/wishlists/" + customerId + "/products/" + productId)
+                .uri("/api/v1/wishlists/" + customerId + "/products/" + productId + "/exists")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(CheckProductResponse.class)
